@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Objects;
@@ -31,10 +32,14 @@ public class Home extends Fragment {
     FrameLayout frameLayout;
     FloatingActionButton fab;
 
+    ImageView imageView;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_home, container, false);
+
+        imageView = view.findViewById(R.id.imgS);
 
         constraintLayout = view.findViewById(R.id.ConsLayout);
         frameLayout = view.findViewById(R.id.flContent);
@@ -62,6 +67,7 @@ public class Home extends Fragment {
                             ft.replace(R.id.flFrag, fragment1);
                             ft.commit();
                             bottomSheetDialog.hide();
+                            imageView.setVisibility(View.GONE);
                         }
                     }
                 });
@@ -76,6 +82,7 @@ public class Home extends Fragment {
                             ft.replace(R.id.flFrag, fragment2);
                             ft.commit();
                             bottomSheetDialog.hide();
+                            imageView.setVisibility(View.GONE);
                         }
                     }
                 });

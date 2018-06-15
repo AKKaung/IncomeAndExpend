@@ -14,9 +14,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    ImageView imageView;
 
     FrameLayout frameLayout;
     Fragment fragment1= null;
@@ -29,6 +32,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        imageView = findViewById(R.id.imgS);
 
         frameLayout = findViewById(R.id.flFrag);
         fragment1 = new FirstFragment();
@@ -70,6 +75,7 @@ public class MainActivity extends AppCompatActivity
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.flContent, new Home());
         ft.commit();
+        imageView.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -121,6 +127,7 @@ public class MainActivity extends AppCompatActivity
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.flContent, fragment);
             ft.commit();
+            imageView.setVisibility(View.GONE);
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
