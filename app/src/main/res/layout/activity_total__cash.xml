@@ -12,14 +12,13 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/maincontent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
+        android:background="@android:color/transparent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
     <android.support.design.widget.TabLayout
@@ -29,7 +28,7 @@
         app:tabTextAppearance="@style/MyCustomTabLayout"
         app:tabIndicatorColor="@android:color/holo_red_dark"
         app:tabSelectedTextColor="@android:color/holo_red_dark"
-        app:tabTextColor="@android:color/black"/>
+        app:tabTextColor="@color/background_color"/>
 
     </android.support.design.widget.AppBarLayout>
 

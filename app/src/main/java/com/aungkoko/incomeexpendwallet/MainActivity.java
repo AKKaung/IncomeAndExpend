@@ -12,10 +12,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.FrameLayout;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    FrameLayout frameLayout;
+    Fragment fragment1= null;
+    Fragment fragment2= null;
     Fragment fragment = null;
 
     @Override
@@ -24,6 +29,10 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        frameLayout = findViewById(R.id.flFrag);
+        fragment1 = new FirstFragment();
+        fragment2 = new SecondFragment();
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -42,15 +51,25 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
         }
+            if (fragment1 != null) {
+                switchToHomeFragment();
+            }
+            if (fragment2 != null) {
+                switchToHomeFragment();
+            }
+            if (fragment != null){
+                switchToHomeFragment();
+            }
+            else {
+                super.onBackPressed();
+            }
+    }
 
-/*        if(!frameLayout.equals(fragment1) || !frameLayout.equals(fragment2) || !frameLayout.equals(fragment)) {
-            fab.setVisibility(View.VISIBLE);
-        }else {
-            fab.setVisibility(View.GONE);
-        }*/
+    private void switchToHomeFragment() {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.flContent, new Home());
+        ft.commit();
     }
 
     @Override
